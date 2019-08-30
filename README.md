@@ -86,4 +86,4 @@ LABEL_14:
 }
 `
 
-![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png))
+![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
