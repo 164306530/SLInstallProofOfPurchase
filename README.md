@@ -84,7 +84,6 @@ LABEL_14:
   v7 = a2;
   return NdrClientCall3(&pProxyInfo, 3u, 0i64, a1, v7, v8, a4, a5, a6);// RPC客户端调用,通过RpcViewer查看调用的是哪个DLL及函数
 }
-  
-  `
-  
+`
+如图:
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
