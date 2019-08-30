@@ -106,5 +106,45 @@ LABEL_14:
 
 条用的dll是C:\Windows\System32\combase.dll
 这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270，可以尝试直接跳转该地址下断点试试。
+```c#
+[
+uuid(18f70770-8e64-11cf-9af1-0020af6e72f4),
+version(0.0),
+]
+interface DefaultIfName
+{
+
+	typedef struct Struct_30_t
+	{
+		short 	StructMember0;
+		short 	StructMember1;
+	[size_is(StructMember0)]short StructMember2[];
+		}Struct_30_t;
+
+error_status_t Proc0(
+	[in]short arg_1, 
+	[in][unique][string] wchar_t* arg_2, 
+	[out]long *arg_3, 
+	[out][ref]struct Struct_30_t** arg_4, 
+	[out][ref]struct Struct_30_t** arg_5);
+
+error_status_t Proc1(
+	[in]short arg_1, 
+	[in][size_is(arg_1)]short arg_2[], 
+	[out][ref]struct Struct_30_t** arg_3);
+
+error_status_t Proc2(                   //函数结构
+	[in]struct Struct_30_t* arg_2, 
+	[in][out]hyper *arg_3, 
+	[out][ref]struct Struct_30_t** arg_4, 
+	[out][ref]struct Struct_30_t** arg_5);
+
+error_status_t Proc3(
+	[in]unsigned __int3264 arg_1);
+
+error_status_t Proc4(
+	[in]long arg_1);
+} 
+`
 
 IDA载入combase.dll再做分析
