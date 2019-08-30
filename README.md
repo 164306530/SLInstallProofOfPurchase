@@ -103,6 +103,7 @@ LABEL_14:
 这里的nProcNum=3
 
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
+
 条用的dll是C:\Windows\System32\combase.dll
 这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270，可以尝试直接跳转该地址下断点试试。
 
