@@ -86,4 +86,4 @@ LABEL_14:
 }
 `
 如图:
-![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
+![image](https://github.com/laomms/SLActivateProduct/blob/master/00.png)
