@@ -85,5 +85,24 @@ LABEL_14:
   return NdrClientCall3(&pProxyInfo, 3u, 0i64, a1, v7, v8, a4, a5, a6);// RPC客户端调用,通过RpcViewer查看调用的是哪个DLL及函数
 }
 `
+```c#
+    struct MIDL_STUBLESS_PROXY_INFO   //(sizeof=0x30, align=0x8, copyof_25)
+    {
+        IntPtr pStubDesc;  //RPC客户端接口
+        IntPtr ProcFormatString;
+        IntPtr FormatStringOffset;
+        IntPtr pTransferSyntax;
+        IntPtr nCount;
+        IntPtr pSyntaxInfo;
+    }
+    
+     [DllImport("RpcRT4.dll", EntryPoint = "NdrClientCall3", ExactSpelling = false, CharSet = CharSet.Unicode)]
+        private extern static int NdrClientCall3(MIDL_STUBLESS_PROXY_INFO pProxyInfo, ulong nProcNum, IntPtr pReturnValue, IntPtr a1, int a2, int a3, IntPtr a4, IntPtr a5, IntPtr a6);
+`
+
+这里的nProcNum=3
 
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
+条用的dll是C:\Windows\System32\combase.dll
+这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270
+
