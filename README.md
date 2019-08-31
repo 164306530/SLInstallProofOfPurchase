@@ -8,7 +8,7 @@ HRESULT SLInstallProofOfPurchase(
   PBYTE  pbPKeySpecificData,
   SLID   *pPkeyId
 );
-`
+```
 
 ```c
 __int64 __fastcall SLInstallProofOfPurchase(__int64 hSLC, __int64 Algorithm, __int64 Key, int cbPKeySpecificData, __int64 pbPKeySpecificData, __int64 PkeyId)
@@ -98,7 +98,7 @@ LABEL_14:
     
      [DllImport("RpcRT4.dll", EntryPoint = "NdrClientCall3", ExactSpelling = false, CharSet = CharSet.Unicode)]
         private extern static int NdrClientCall3(MIDL_STUBLESS_PROXY_INFO pProxyInfo, ulong nProcNum, IntPtr pReturnValue, IntPtr a1, int a2, int a3, IntPtr a4, IntPtr a5, IntPtr a6);
-`
+```
 
 这里的nProcNum=3
 
@@ -145,6 +145,6 @@ error_status_t Proc3(
 error_status_t Proc4(
 	[in]long arg_1);
 } 
-`
+```
 
 IDA载入combase.dll再做分析
