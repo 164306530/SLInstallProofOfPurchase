@@ -10,6 +10,7 @@ HRESULT SLInstallProofOfPurchase(
 );
 ```
 
+想知道PKeyId是怎么产生的，所以调试了下SLInstallProofOfPurchase.
 ```c
 __int64 __fastcall SLInstallProofOfPurchase(__int64 hSLC, __int64 Algorithm, __int64 Key, int cbPKeySpecificData, __int64 pbPKeySpecificData, __int64 PkeyId)
 {
