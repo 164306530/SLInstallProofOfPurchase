@@ -171,3 +171,4 @@ private extern static int NdrClientCall4(IntPtr pStubDescriptor, IntPtr pFormat,
 0x6F8820C8  9f e8 08 00 2b 10 48 60 02 00 00 00 00 00 00 00  ??..+.H`........
 此次InterfaceId GUID为 9435cc56-1d9c-4924-7dac-e120352c0ab6，可以用于查询rpcview
 ```
+后来调试了下发现宿主dll是错的，放弃.
