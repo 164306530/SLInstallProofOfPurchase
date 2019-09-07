@@ -115,7 +115,7 @@ LABEL_14:
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
 
 条用的dll是C:\Windows\System32\combase.dll
-这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270，可以尝试直接跳转该地址下断点试试。
+这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270
 ```c#
 [
 uuid(18f70770-8e64-11cf-9af1-0020af6e72f4),
