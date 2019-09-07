@@ -162,6 +162,10 @@ IDA载入combase.dll再做分析
 ```c
 private extern static int NdrClientCall4(IntPtr pStubDescriptor, IntPtr pFormat, IntPtr Handle, int DataSize, int Data, IntPtr ResponseSize, IntPtr Response,IntPtr a6);
 根据pStubDescriptor结构查询InterfaceId的uuid:
+0x6F881008  a8 20 88 6f 30 21 89 6f 60 21 89 6f 28 60 89 6f  ? ?o0!?o`!?o(`?o
+0x6F881018  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+
+0x6f8820a8
 0x6F8820A8  44 00 00 00 56 cc 35 94 9c 1d 24 49 ac 7d b6 0a  D...V?5??.$I?}?.
 0x6F8820B8  2c 35 20 e1 01 00 00 00 04 5d 88 8a eb 1c c9 11  ,5 ?.....]???.?.
 0x6F8820C8  9f e8 08 00 2b 10 48 60 02 00 00 00 00 00 00 00  ??..+.H`........
