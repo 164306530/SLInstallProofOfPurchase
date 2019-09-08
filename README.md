@@ -156,8 +156,9 @@ error_status_t Proc3(
 error_status_t Proc4(
 	[in]long arg_1);
 } 
-```
 
+```
+后来发现是错的。
 
 32位的调用的是NdrClientCall2:
 ```c
