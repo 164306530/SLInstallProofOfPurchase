@@ -162,6 +162,13 @@ error_status_t Proc4(
 32位的调用的是NdrClientCall2:
 ```c
 private extern static int NdrClientCall4(IntPtr pStubDescriptor, IntPtr pFormat, IntPtr Handle, int DataSize, int Data, IntPtr ResponseSize, IntPtr Response,IntPtr a6);
+
+a6:
+0x010FE488  c0 c0 8f 0a c0 80 4a 01 00 00 00 00 6c e4 0f 01  ???.?€J.....l?..
+0a8fc0c0:
+0x0A8FC0C0  e2 d9 dd 01 04 00 00 00 00 00 00 00 10 00 00 00  ???.............
+0x0A8FC0D0  a9 2d 48 7c 5e 25 3c a8 ab cd 16 96 1a 56 83 21  ?-H|^%<???.?.V?!   //pkeyid
+
 根据pStubDescriptor结构查询InterfaceId的uuid:
 0x6F881008  a8 20 88 6f 30 21 89 6f 60 21 89 6f 28 60 89 6f  ? ?o0!?o`!?o(`?o
 0x6F881018  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
