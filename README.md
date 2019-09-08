@@ -183,7 +183,7 @@ a6:
 换API monitor监视下客户端的跳用过程:
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/12.png)
 
-发现RPC的模式是Local Procedure Call（LPC）模式,"ncalrpc"
+从"ncalrpc"看出RPC的模式是Local Procedure Call（LPC）模式,即ALPC.
 
 ```c
 服务端代码：
