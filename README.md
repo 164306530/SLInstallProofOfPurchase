@@ -181,7 +181,7 @@ a6:
 此次InterfaceId GUID为 9435cc56-1d9c-4924-7dac-e120352c0ab6，可以用于查询rpcview
 ```
 
-换API monitor监视下客户端的跳用过程:
+换API monitor监视下客户端的调用过程:
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/12.png)
 
 从"ncalrpc"看出RPC的模式是Local Procedure Call（LPC）模式,即ALPC.
