@@ -208,5 +208,6 @@ RpcStringBindingCompose(
     &pszStringBinding );
 ```
 再用Process Monitor看一下
+![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/12.png)
 
-IDA载入combase.dll再做分析,后来调试了下发现宿主combase.dll是错的，可能是csrss, lsass之类的，或者sppsvc.exe，懒得搞了放弃.
+宿主可能是csrss, lsass之类的，或者sppsvc.exe，懒得搞了放弃.
