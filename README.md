@@ -185,6 +185,7 @@ a6:
 
 发现RPC的模式是Local Procedure Call（LPC）模式,"ncalrpc"
 
+```c
 服务端代码：
 server.c
 --------------
@@ -205,4 +206,6 @@ RpcStringBindingCompose(
     NULL, (unsigned char*)"AppName",
     NULL,
     &pszStringBinding );
+```
+    
 IDA载入combase.dll再做分析,后来调试了下发现宿主combase.dll是错的，放弃.
