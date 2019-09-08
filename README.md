@@ -179,4 +179,27 @@ a6:
 0x6F8820C8  9f e8 08 00 2b 10 48 60 02 00 00 00 00 00 00 00  ??..+.H`........
 此次InterfaceId GUID为 9435cc56-1d9c-4924-7dac-e120352c0ab6，可以用于查询rpcview
 ```
+换API monitor监视下客户端的跳用过程:
+![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/12.png)
+发现RPC的模式是Local Procedure Call（LPC）模式,"ncalrpc"
+服务端代码：
+server.c
+--------------
+RpcServerUseProtseqEp(
+    (unsigned char *)"ncalrpc",
+    RPC_C_PROTSEQ_MAX_REQS_DEFAULT,
+    (unsigned char *)"AppName",
+    NULL);
+
+
+客户端代码：
+--------------
+// 用LPC 方式通信
+// 第3 个参数NetworkAddr 只能取NULL
+RpcStringBindingCompose(
+    NULL,
+    (unsigned char*)"ncalrpc",
+    NULL, (unsigned char*)"AppName",
+    NULL,
+    &pszStringBinding );
 IDA载入combase.dll再做分析,后来调试了下发现宿主combase.dll是错的，放弃.
