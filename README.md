@@ -162,6 +162,8 @@ long Proc3(
 
 ```
 IDA载入sppsvc.exe,找到偏移地址:
+![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/3.png)
+![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/4.png)
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/2.png)
 ```c
 __int64 __fastcall CSppServiceOperationT<CEmptyType>::Phase2InitSecureCallback(RPC_IF_HANDLE InterfaceUuid, void *Context)
