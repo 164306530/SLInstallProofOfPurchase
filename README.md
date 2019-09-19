@@ -109,6 +109,19 @@ LABEL_14:
     
      [DllImport("RpcRT4.dll", EntryPoint = "NdrClientCall3", ExactSpelling = false, CharSet = CharSet.Unicode)]
         private extern static int NdrClientCall3(MIDL_STUBLESS_PROXY_INFO pProxyInfo, ulong nProcNum, IntPtr pReturnValue, IntPtr a1, int a2, int a3, IntPtr a4, IntPtr a5, IntPtr a6);
+
+
+pStubDesc结构
+0x000007FEF0CA1F80  90 1d ca f0 fe 07 00 00 44 0c cb f0 fe 07 00 00  ?.???...D.???...
+0x000007FEF0CA1F90  54 0c cb f0 fe 07 00 00 08 12 cc f0 fe 07 00 00  T.???.....???...
+0x000007FEF0CA1FA0  00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00  ................
+
+看下000007FEF0CA1D90内存地址:
+0x000007FEF0CA1D90  60 00 00 00 56 cc 35 94 9c 1d 24 49 ac 7d b6 0a  `...V?5??.$I?}?.
+0x000007FEF0CA1DA0  2c 35 20 e1 01 00 00 00 04 5d 88 8a eb 1c c9 11  ,5 ?.....]???.?.
+0x000007FEF0CA1DB0  9f e8 08 00 2b 10 48 60 02 00 00 00 00 00 00 00  ??..+.H`........
+这里可以看到GUID位9435cc56-1d9c-4924-ac7d-b60a2c3520e1
+
 ```
 
 这里的nProcNum=3
