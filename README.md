@@ -120,58 +120,48 @@ pStubDesc结构
 0x000007FEF0CA1D90  60 00 00 00 56 cc 35 94 9c 1d 24 49 ac 7d b6 0a  `...V?5??.$I?}?.
 0x000007FEF0CA1DA0  2c 35 20 e1 01 00 00 00 04 5d 88 8a eb 1c c9 11  ,5 ?.....]???.?.
 0x000007FEF0CA1DB0  9f e8 08 00 2b 10 48 60 02 00 00 00 00 00 00 00  ??..+.H`........
-这里可以看到GUID位9435cc56-1d9c-4924-ac7d-b60a2c3520e1
+这里可以看到InterfaceId的GUID为9435cc56-1d9c-4924-ac7d-b60a2c3520e1
 
 ```
-
-这里的nProcNum=3
+rpcview中查找这个GUID值:
 
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/1.png)
 
-条用的dll是C:\Windows\System32\combase.dll
-这里总共调用了5个函数，其中第三个函数的相对地址是:0x00007fffb51a1270
+可以看到rpc服务端为 C:\Windows\System32\sppsvc.exe
+返回函数的偏移地址为4E700, 函数结构为
 ```c#
 [
-uuid(18f70770-8e64-11cf-9af1-0020af6e72f4),
-version(0.0),
+uuid(9435cc56-1d9c-4924-ac7d-b60a2c3520e1),
+version(1.0),
 ]
 interface DefaultIfName
 {
 
-	typedef struct Struct_30_t
-	{
-		short 	StructMember0;
-		short 	StructMember1;
-	[size_is(StructMember0)]short StructMember2[];
-		}Struct_30_t;
+long Proc0(
+	[out][context_handle] void** arg_1);
 
-error_status_t Proc0(
-	[in]short arg_1, 
-	[in][unique][string] wchar_t* arg_2, 
-	[out]long *arg_3, 
-	[out][ref]struct Struct_30_t** arg_4, 
-	[out][ref]struct Struct_30_t** arg_5);
+long Proc1(
+	[in][out][context_handle] void** arg_0);
 
-error_status_t Proc1(
-	[in]short arg_1, 
-	[in][size_is(arg_1)]short arg_2[], 
-	[out][ref]struct Struct_30_t** arg_3);
+long Proc2(
+	[in][context_handle] void* arg_0, 
+	[in]/* enum_16 */ short arg_1, 
+	[in][range(0,5242880)] long arg_2, 
+	[in][size_is(arg_2)]char arg_3[], 
+	[out]long *arg_4, 
+	[out][ref][size_is(, *arg_4)]char **arg_5);
 
-error_status_t Proc2(                   //函数结构
-	[in]struct Struct_30_t* arg_2, 
-	[in][out]hyper *arg_3, 
-	[out][ref]struct Struct_30_t** arg_4, 
-	[out][ref]struct Struct_30_t** arg_5);
-
-error_status_t Proc3(
-	[in]unsigned __int3264 arg_1);
-
-error_status_t Proc4(
-	[in]long arg_1);
+long Proc3(
+	[in][context_handle] void* arg_0, 
+	[in]/* enum_16 */ short arg_1, 
+	[in][range(0,5242880)] long arg_2, 
+	[in][size_is(arg_2)]char arg_3[], 
+	[out]long *arg_4, 
+	[out][ref][size_is(, *arg_4)]char **arg_5);
 } 
 
 ```
-后来发现是错的。
+
 
 32位的调用的是NdrClientCall2:
 ```c
