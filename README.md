@@ -233,7 +233,7 @@ LABEL_16:
 ```
 
 
-32位的调用的是NdrClientCall2:
+32位的调用的是NdrClientCall2,用另一种方法找出服务端:
 ```c
 private extern static int NdrClientCall4(IntPtr pStubDescriptor, IntPtr pFormat, IntPtr Handle, int DataSize, int Data, IntPtr ResponseSize, IntPtr Response,IntPtr a6);
 
