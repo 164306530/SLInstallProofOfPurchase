@@ -163,6 +163,75 @@ long Proc3(
 ```
 IDA载入sppsvc.exe,找到偏移地址:
 ![image](https://github.com/laomms/SLInstallProofOfPurchase/blob/master/2.png)
+```c
+__int64 __fastcall CSppServiceOperationT<CEmptyType>::Phase2InitSecureCallback(RPC_IF_HANDLE InterfaceUuid, void *Context)
+{
+  RPC_STATUS v2; // eax
+  int v3; // eax
+  unsigned int v4; // ebx
+  RPC_STATUS v5; // eax
+  unsigned int v6; // ecx
+  __int64 *v8; // [rsp+20h] [rbp-58h]
+  __int64 v9; // [rsp+28h] [rbp-50h]
+  int RpcCallAttributes; // [rsp+30h] [rbp-48h]
+  char Dst; // [rsp+34h] [rbp-44h]
+  int v12; // [rsp+58h] [rbp-20h]
+  unsigned int Pid; // [rsp+90h] [rbp+18h]
+  __int64 v14; // [rsp+98h] [rbp+20h]
+
+  memset(&Dst, 0, 0x34ui64);
+  RpcCallAttributes = 1;
+  v2 = RpcServerInqCallAttributesW(0i64, &RpcCallAttributes);
+  if ( v2 )
+  {
+    v3 = I_RpcMapWin32Status(v2);
+    v4 = (unsigned __int16)v3 | 0x80070000;
+    if ( v3 <= 0 )
+      v4 = v3;
+    if ( (v4 & 0x80000000) != 0 )
+      goto LABEL_16;
+  }
+  if ( v12 != 6 )
+  {
+    v4 = -2147024891;
+LABEL_16:
+    if ( WPP_GLOBAL_Control != (WARBIRD *)&WPP_GLOBAL_Control && *((_BYTE *)WPP_GLOBAL_Control + 60) & 2 )
+      WPP_SF_d(*((_QWORD *)WPP_GLOBAL_Control + 6), 25i64, qword_100021560, v4);
+    return v4;
+  }
+  if ( CSppServiceOperationT<CEmptyType>::g_fPhase2InitAttempted )
+  {
+    v4 = CSppServiceOperationT<CEmptyType>::g_hrInitStatus;
+  }
+  else
+  {
+    v5 = I_RpcBindingInqLocalClientPID(0i64, &Pid);
+    v6 = Pid;
+    if ( v5 )
+      v6 = 0;
+    Pid = v6;
+    LODWORD(v14) = v6;
+    if ( SLEtwHelperT<CEmptyType>::g_SLTraceRegHandle
+      && (unsigned __int8)SLEtwHelperT<CEmptyType>::pfnEventEnabled(
+                            SLEtwHelperT<CEmptyType>::g_SLTraceRegHandle,
+                            &SLSVC_External_ExternalCallDuringInit) )
+    {
+      v8 = &v14;
+      v9 = 4i64;
+      ((void (__fastcall *)(_QWORD, _QWORD *, __int64, __int64 **))SLEtwHelperT<CEmptyType>::pfnEventWrite)(
+        SLEtwHelperT<CEmptyType>::g_SLTraceRegHandle,
+        &SLSVC_External_ExternalCallDuringInit,
+        1i64,
+        &v8);
+    }
+    v4 = CSppServiceOperationT<CEmptyType>::Phase2InitWorker(0i64);
+  }
+  if ( (v4 & 0x80000000) != 0 )
+    goto LABEL_16;
+  return v4;
+}
+```
+
 
 32位的调用的是NdrClientCall2:
 ```c
